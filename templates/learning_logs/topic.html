@@ -21,6 +21,9 @@
                     {{ entry.text|linebreaks }}
                 </p>
             </li>
+            <a href="{% url 'learning_logs:edit_entry' topic.id %}">
+                Edit Entry
+            </a>
         {% empty %}
             <li>
                 There is no entries for this topic yet.

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Topic
+from .models import Topic, Entry
 
 # new_topic所需的模块
 from django.http import HttpResponseRedirect
@@ -56,3 +56,21 @@ def new_entry(request, topic_id):
 			return HttpResponseRedirect(redirect_to=reverse('learning_logs:topic', args=[topic_id]))
 	context = {'topic': topic, 'form': form}
 	return render(request, 'learning_logs/new_entry.html', context)
+
+
+def edit_entry(request, entry_id):
+	"""编辑既有条目"""
+	entry = Entry.objects.get(id=entry_id)
+	topic = entry.topic
+
+	if request.method != 'POST':
+		form = EntryForm(instance=entry)
+	else:
+		form = EntryForm(data=request.POST, instance=entry)
+
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(redirect_to=reverse('learning_logs:topic', args=[topic.id]))
+
+	context = {'form': form, 'entry': entry, 'topic': topic}
+	return render(request, "learning_logs/edit_entry.html", context)
