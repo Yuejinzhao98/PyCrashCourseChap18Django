@@ -19,10 +19,13 @@ from django.urls import path
 from django.conf.urls import url, include
 
 from learning_logs import views
-from learning_logs.urls import app_name
+
+app_name = "learning_logs"
+app_name_2 = "users"
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
-	url(r'', include(('learning_logs.urls',app_name),namespace="learning_logs")),
-
+	url(r'', include(('learning_logs.urls', app_name), namespace="learning_logs")),
+	url(r'^users/', include(('users.urls', app_name_2), namespace="users")),
+	# 注意，在'^users/'后面不加dollar符号
 ]

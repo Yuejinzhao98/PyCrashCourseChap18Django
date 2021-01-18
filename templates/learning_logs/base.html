@@ -11,7 +11,14 @@
     </a> -
     <a href="{% url 'learning_logs:topics' %}">
         Topics
-    </a>
+    </a> -
+    {% if user.is_authenticated %}
+        Hello, {{ user.username }}.
+        <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}
+        <a href="{% url 'users:login' %}">Log in</a> -
+        <a href="{% url 'users:register' %}">Register</a>
+    {% endif %}
 
     {% block content %}{% endblock content %}
 </p>
