@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LEARNING LOGS HOME</title>
+</head>
+<body>
+<p>
+    <a href="{% url 'learning_logs:index' %}">
+        Learning Logs
+    </a> -
+    <a href="{% url 'learning_logs:topics' %}">
+        Topics
+    </a>
+
+    {% block content %}{% endblock content %}
+</p>
+</body>
+</html>
