@@ -1,7 +1,22 @@
 {% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+{% block header %}
+    <div class="jumbotron">
+        <h1>
+            Trace your learning.
+        </h1>
+    </div>
+{% endblock header %}
 {% block content %}
-<p>
-    Learning logs can help you keep trace of your learning, for any topic you've
-    learning about.
-</p>
+    <h2>
+        <a href="{% url 'users:register' %}">Register your account</a> to make your own learning
+        log, and list the topic you're learning about.
+    </h2>
+    <h2>
+        Whenever you learn something about a new topic, make an entry summarizing what you've learned.
+    </h2>
+    <p>
+        Learning logs can help you keep trace of your learning, for any topic you've
+        learning about.
+    </p>
 {% endblock content %}

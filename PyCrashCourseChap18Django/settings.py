@@ -37,7 +37,10 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	# 我的应用程序
 	'learning_logs',
-	'users'
+	'users',
+	# 第三方应用程序
+	'bootstrap3',
+
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,9 @@ STATIC_URL = '/static/'
 
 # my settings
 LOGIN_URL = '/users/login/'
+
+# django-bootstrap3's setting
+BOOTSTRAP3 = {
+	'include_jquary': True,
+
+}
