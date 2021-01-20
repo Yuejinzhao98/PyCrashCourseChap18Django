@@ -161,6 +161,7 @@ if cwd == '/app' or cwd[:4] == '/tmp':
 	STATIC_ROOT = 'staticfiles'
 	STATICFILES_DIRS = (
 		os.path.join(BASE_DIR, 'static'),
+
 	)
 
 	# Only allow heroku to host this project
