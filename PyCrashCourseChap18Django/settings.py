@@ -133,9 +133,10 @@ BOOTSTRAP3 = {
 }
 
 #heroku settings
-if os.getcwd()=='/app':
+# refer the new version doc at https://segmentfault.com/q/1010000010016708
+cwd = os.getcwd()
+if cwd == '/app' or cwd[:4] == '/tmp':
 	import dj_database_url
-
 	DATABASES = {
 		'default': {
 			'ENGINE': dj_database_url.config(default='postgres://localhost')
@@ -147,8 +148,8 @@ if os.getcwd()=='/app':
 	ALLOWED_HOSTS = ['*']
 
 	#static assets settings
-BASE_DIR=os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT='staticfiles'
-STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
+	BASE_DIR=os.path.dirname(os.path.abspath(__file__))
+	STATIC_ROOT='staticfiles'
+	STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
 
 
