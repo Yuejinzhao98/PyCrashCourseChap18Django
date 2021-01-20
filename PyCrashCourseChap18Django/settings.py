@@ -159,10 +159,7 @@ if cwd == '/app' or cwd[:4] == '/tmp':
 	# static assets settings
 	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 	STATIC_ROOT = 'staticfiles'
-	STATICFILES_DIRS = (
-		os.path.join(BASE_DIR, 'static'),
-
-	)
+	STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 	# Only allow heroku to host this project
 
