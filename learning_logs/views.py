@@ -46,7 +46,7 @@ def new_topic(request):
 	else:
 		form = TopicForm(request.POST)
 		if form.is_valid():
-			new_topic = form.save()
+			new_topic = form.save(commit=False)#注意这里如果没加commit=false会发生NOT NULL constraint failed: learning_logs_topic.owner_id，是因为此时信息不全
 			new_topic.owner = request.user
 			new_topic.save()
 			return HttpResponseRedirect(reverse('learning_logs:topics'))

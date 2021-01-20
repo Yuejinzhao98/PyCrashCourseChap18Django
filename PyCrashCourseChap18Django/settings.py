@@ -24,7 +24,7 @@ SECRET_KEY = 'zgi0ixr6n_j=16(bm#%gpk@us6%&8hq&qrt&+8%02_q634*o2_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -130,3 +130,25 @@ BOOTSTRAP3 = {
 	'include_jquary': True,
 
 }
+import os
+
+#heroku settings
+if os.getcwd()=='/app':
+	import dj_database_url
+
+	DATABASES = {
+		'default': {
+			'ENGINE': dj_database_url.config(default='postgres://localhost')
+		}
+	}
+
+	SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
+
+	ALLOWED_HOSTS = ['*']
+
+	#static assets settings
+	BASE_DIR=os.path.dirname(os.path.abspath(__file__))
+	STATIC_ROOT='staticfiles'
+	STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
+
+
