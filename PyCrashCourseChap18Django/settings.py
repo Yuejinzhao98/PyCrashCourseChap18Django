@@ -13,8 +13,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
-import django_heroku
+"""
+yuejinzhao note:
+Django project to herku must read the official doc:
+https://devcenter.heroku.com/articles/django-app-configuration
+"""
 
+import django_heroku  # Official configuration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,29 +140,33 @@ BOOTSTRAP3 = {
 
 }
 
-#heroku settings
+# heroku settings
 # refer the new version doc at https://segmentfault.com/q/1010000010016708
 cwd = os.getcwd()
 if cwd == '/app' or cwd[:4] == '/tmp':
 	import dj_database_url
+
 	DATABASES = {
 		'default': {
 			'ENGINE': dj_database_url.config(default='postgres://localhost')
 		}
 	}
 
-	SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
+	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 	ALLOWED_HOSTS = ['*']
 
-	#static assets settings
-	BASE_DIR=os.path.dirname(os.path.abspath(__file__))
-	STATIC_ROOT='staticfiles'
-	STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
+	# static assets settings
+	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+	STATIC_ROOT = 'staticfiles'
+	STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'))
 
+	# Only allow heroku to host this project
 
-#bottom
+	ALLOWED_HOSTS = ['yjzlearninglog.herokuapp.com']
+
+	DEBUG = False
+
+# bottom
 
 django_heroku.settings(locals())
-
-
