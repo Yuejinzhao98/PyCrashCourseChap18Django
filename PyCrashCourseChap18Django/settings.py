@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 import django_heroku
-django_heroku.settings(locals())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,5 +154,10 @@ if cwd == '/app' or cwd[:4] == '/tmp':
 	BASE_DIR=os.path.dirname(os.path.abspath(__file__))
 	STATIC_ROOT='staticfiles'
 	STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
+
+
+#bottom
+
+django_heroku.settings(locals())
 
 
